@@ -91,4 +91,4 @@ def music():
     return html_string(enter_music_link(link)), 201
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, debug=False)
