@@ -38,8 +38,8 @@ def get_youtube_uri(youtube_track_link):
 def spotify_to_youtube(spotify_link):
     spotify_uri = get_spotify_uri(spotify_link)
     song_name = sp.track(spotify_uri)['name']
-    print(sp.track(spotify_uri))
-    request = youtube.search().list(part="snippet", q=song_name)
+    artist_name = sp.track(spotify_uri)['album']['artists'][0]['name']
+    request = youtube.search().list(part="snippet", q=song_name+' '+artist_name)
     response = request.execute()
     youtube_music_id = response["items"][0]["id"]["videoId"]
     return youtube_music_link.format(song_id=youtube_music_id)
