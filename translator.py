@@ -1,13 +1,17 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from googleapiclient.discovery import build
-import re
+import re,os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 #creds
-spotify_client_id  = "9bb3ec6b33db42e5b2c975bcae6a7a4e"
-spotify_client_secret = "b86c01e27b4545a2b0969b4e22250dcc"
+spotify_client_id  = os.getenv('SPOTIFY_CLIENT_ID')
+spotify_client_secret = os.getenv('SPOTIFY_CLIENT_SECRET')
 
-youtube_developer_key = "AIzaSyBcAFPSJcfeEauvwJqqDo47sNPoQFL4lq0"
+youtube_developer_key = os.getenv('YOUTUBE_DEVELOPER_TOKEN')
 
 # clients
 youtube = build("youtube", "v3", developerKey=youtube_developer_key)
